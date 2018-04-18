@@ -1,5 +1,7 @@
 # babel-plugin-optional-require
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/satya164/babel-plugin-optional-require.svg)](https://greenkeeper.io/)
+
 Babel plugin to optionaly require modules. Useful with a bundler like [Metro](https://github.com/facebook/metro) which doesn't support optional `require` statements.
 
 ## Usage
