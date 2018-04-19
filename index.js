@@ -1,13 +1,14 @@
 /* @flow */
 
-const resolve = require('resolve-cwd');
+const dirname = require('path').dirname;
+const resolve = require('resolve-from');
 
-module.exports = function rewire(babel) {
+module.exports = function rewire(babel /*: any */) {
   const t = babel.types;
 
   return {
     visitor: {
-      TryStatement(path) {
+      TryStatement(path /*: any */, state /*: any */) {
         path.get('block').traverse({
           CallExpression(p) {
             if (
@@ -18,9 +19,13 @@ module.exports = function rewire(babel) {
             }
 
             const name = p.node.arguments[0].value;
+            const cwd =
+              state.file && state.file.opts && state.file.opts.filename
+                ? dirname(state.file.opts.filename)
+                : process.cwd();
 
             try {
-              resolve(name);
+              resolve(cwd, name);
             } catch (e) {
               p.replaceWith(
                 t.throwStatement(

@@ -1,7 +1,7 @@
 let a;
 
 try {
-  a = require('resolve-from');
+  a = require('./output');
 } catch (e) {
   a = require('something-else');
 }

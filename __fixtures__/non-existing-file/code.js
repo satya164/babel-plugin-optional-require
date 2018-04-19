@@ -1,7 +1,7 @@
 let a;
 
 try {
-  a = require('resolve-from');
-} catch (e) {
+  a = require('./some-file');
+} catch(e) {
   a = require('something-else');
 }
