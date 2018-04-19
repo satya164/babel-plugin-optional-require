@@ -2,6 +2,8 @@
 
 Babel plugin to optionaly require modules. Useful with a bundler like [Metro](https://github.com/facebook/metro) which doesn't support optional `require` statements.
 
+This is primarily useful if you want add an dependency to your library that's optional and you want users to be able to opt-out of it to save bundle size. You can also use it in apps to load configuration files only if they exist.
+
 ## Usage
 
 Install the plugin:
@@ -30,6 +32,8 @@ let a;
 try {
   a = require('optional-module');
 } catch (e) {
-  // handle failure from loading the module
+  // Handle failure from loading the module
 }
 ```
+
+If the module `optional-module` doesn't exist, the `require` call will be replaced with an IIFE that throws an error, so you can catch it and handle it at runtime. Otherwise, the code is left unchanged.
