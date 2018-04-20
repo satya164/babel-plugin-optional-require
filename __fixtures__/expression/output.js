@@ -1,7 +1,9 @@
 let a;
 
 try {
-  a = require('some' + 'thing');
+  a = function () {
+    throw new Error('Cannot find module \'something\'');
+  }();
 } catch (e) {
   a = require('something-else');
 }

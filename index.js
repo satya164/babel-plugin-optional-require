@@ -19,15 +19,7 @@ module.exports = function rewire(babel /*: any */) {
               return;
             }
 
-            const node = p.node.arguments[0];
-
-            let name;
-
-            if (t.isStringLiteral(node)) {
-              name = node.value;
-            } else if (t.isTemplateLiteral(node) && node.quasis.length === 1) {
-              name = node.quasis[0].value.cooked;
-            }
+            const name = p.get('arguments')[0].evaluate().value;
 
             if (typeof name !== 'string') {
               return;
