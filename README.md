@@ -22,6 +22,10 @@ Then include it in your `.babelrc`:
 }
 ```
 
+## Options
+
+- `builtins: boolean`: Whether to resolve Node builtins. Default: `false`.
+
 ## Example
 
 To optionally `require` a module, you need to wrap it in `try/catch`:

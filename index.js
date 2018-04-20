@@ -2,6 +2,7 @@
 
 const dirname = require('path').dirname;
 const resolve = require('resolve-from');
+const isBuiltin = require('is-builtin-module');
 
 module.exports = function rewire(babel /*: any */) {
   const t = babel.types;
@@ -38,7 +39,11 @@ module.exports = function rewire(babel /*: any */) {
                 : process.cwd();
 
             try {
-              resolve(cwd, name);
+              if (state.opts.builtins !== true && isBuiltin(name)) {
+                throw new Error(`Cannot resolve builtin module '${name}'`);
+              } else {
+                resolve(cwd, name);
+              }
             } catch (e) {
               p.replaceWith(
                 t.throwStatement(
