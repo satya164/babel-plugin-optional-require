@@ -18,7 +18,20 @@ module.exports = function rewire(babel /*: any */) {
               return;
             }
 
-            const name = p.node.arguments[0].value;
+            const node = p.node.arguments[0];
+
+            let name;
+
+            if (t.isStringLiteral(node)) {
+              name = node.value;
+            } else if (t.isTemplateLiteral(node) && node.quasis.length === 1) {
+              name = node.quasis[0].value.cooked;
+            }
+
+            if (typeof name !== 'string') {
+              return;
+            }
+
             const cwd =
               state.file && state.file.opts && state.file.opts.filename
                 ? dirname(state.file.opts.filename)
