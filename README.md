@@ -25,6 +25,8 @@ Then include it in your `.babelrc`:
 ## Options
 
 - `builtins: boolean`: Whether to resolve Node builtins. Default: `false`.
+- `blacklist: string[]`: List of modules we assume to always unavailable without resolving. Default: `[]`.
+- `whitelist: string[]`: List of modules we assume to always available without resolving. Default: `[]`.
 
 ## Example
 

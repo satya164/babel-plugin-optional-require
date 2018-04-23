@@ -19,9 +19,19 @@ module.exports = function rewire(babel /*: any */) {
               return;
             }
 
+            const {
+              builtins = false,
+              blacklist = [],
+              whitelist = [],
+            } = state.opts;
+
             const name = p.get('arguments')[0].evaluate().value;
 
             if (typeof name !== 'string') {
+              return;
+            }
+
+            if (whitelist.includes(name)) {
               return;
             }
 
@@ -31,7 +41,11 @@ module.exports = function rewire(babel /*: any */) {
                 : process.cwd();
 
             try {
-              if (state.opts.builtins !== true && isBuiltin(name)) {
+              if (blacklist.includes(name)) {
+                throw new Error(`Cannot find module '${name}'`);
+              }
+
+              if (builtins !== true && isBuiltin(name)) {
                 throw new Error(`Cannot resolve builtin module '${name}'`);
               } else {
                 resolve(cwd, name);
