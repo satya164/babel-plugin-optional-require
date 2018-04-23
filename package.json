@@ -1,12 +1,12 @@
 {
   "name": "babel-plugin-optional-require",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Babel plugin to transpile object styles to template literal",
   "main": "index.js",
   "files": [
     "index.js"
   ],
-  "repository": "git@github.com:satya164/linaria-object-styles.git",
+  "repository": "git@github.com:satya164/babel-plugin-optional-require.git",
   "author": "Satyajit Sahoo <satyajit.happy@gmail.com>",
   "license": "MIT",
   "keywords": [
