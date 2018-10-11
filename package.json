@@ -19,17 +19,23 @@
   "scripts": {
     "lint": "eslint .",
     "flow": "flow",
-    "test": "jest"
+    "test": "jest",
+    "release": "release-it"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "babel-plugin-tester": "^5.5.1",
+    "conventional-changelog-cli": "^2.0.5",
     "dedent": "^0.7.0",
     "eslint": "^5.4.0",
     "eslint-config-satya164": "^2.0.1",
     "flow-bin": "^0.79.1",
     "jest": "^23.5.0",
-    "prettier": "^1.14.2"
+    "prettier": "^1.14.2",
+    "release-it": "^7.6.1"
   },
   "dependencies": {
     "is-builtin-module": "^2.0.0",
