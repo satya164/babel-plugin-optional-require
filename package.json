@@ -27,18 +27,25 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
-    "babel-plugin-tester": "^5.5.1",
+    "babel-test": "^0.1.1",
     "conventional-changelog-cli": "^2.0.5",
     "dedent": "^0.7.0",
     "eslint": "^5.4.0",
     "eslint-config-satya164": "^2.0.1",
     "flow-bin": "^0.79.1",
     "jest": "^23.5.0",
+    "jest-file-snapshot": "^0.3.2",
     "prettier": "^1.14.2",
     "release-it": "^7.6.1"
   },
   "dependencies": {
     "is-builtin-module": "^2.0.0",
     "resolve-from": "^4.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "watchPathIgnorePatterns": [
+      "__fixtures__\\/[^/]+\\/(output|error)\\.js"
+    ]
   }
 }

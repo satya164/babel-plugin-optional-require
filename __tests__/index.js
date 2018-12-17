@@ -1,10 +1,13 @@
 /* @flow */
 
 const path = require('path');
-const tester = require('babel-plugin-tester');
+const { create } = require('babel-test');
+const { toMatchFile } = require('jest-file-snapshot');
 
-tester({
-  plugin: require('../index'),
-  pluginName: 'optional-require',
-  fixtures: path.join(__dirname, '..', '__fixtures__'),
+expect.extend({ toMatchFile });
+
+const { fixtures } = create({
+  plugins: [require.resolve('../index')],
 });
+
+fixtures('optional-require', path.join(__dirname, '..', '__fixtures__'));
